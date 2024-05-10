@@ -411,6 +411,9 @@ texture = ExtResource("2_fdp7o")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_mp2lt")
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d6pai"]
+distance = -95.0
+
 [sub_resource type="Animation" id="Animation_vbpcw"]
 length = 0.001
 tracks/0/type = "value"
@@ -449,9 +452,6 @@ _data = {
 "move_platform": SubResource("Animation_obfy1")
 }
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d6pai"]
-distance = -95.0
-
 [node name="Game" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -472,28 +472,32 @@ limit_bottom = 160
 limit_smoothed = true
 position_smoothing_enabled = true
 
-[node name="Platform" parent="." instance=ExtResource("4_ejpc1")]
+[node name="killzone" parent="." instance=ExtResource("6_rili2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+shape = SubResource("WorldBoundaryShape2D_d6pai")
+
+[node name="platforms" type="Node" parent="."]
+
+[node name="Platform" parent="platforms" instance=ExtResource("4_ejpc1")]
 position = Vector2(-19, -36)
 
-[node name="Platform2" parent="." instance=ExtResource("4_ejpc1")]
+[node name="Platform2" parent="platforms" instance=ExtResource("4_ejpc1")]
 position = Vector2(323, 21)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platforms/Platform2"]
 libraries = {
 "": SubResource("AnimationLibrary_b0vis")
 }
 autoplay = "move_platform"
 
-[node name="coin" parent="." instance=ExtResource("5_id8ca")]
+[node name="coins" type="Node" parent="."]
+
+[node name="coin" parent="coins" instance=ExtResource("5_id8ca")]
 position = Vector2(184, 21)
 
-[node name="coin2" parent="." instance=ExtResource("5_id8ca")]
+[node name="coin2" parent="coins" instance=ExtResource("5_id8ca")]
 position = Vector2(201, 21)
 
-[node name="coin3" parent="." instance=ExtResource("5_id8ca")]
+[node name="coin3" parent="coins" instance=ExtResource("5_id8ca")]
 position = Vector2(24, 24)
-
-[node name="killzone" parent="." instance=ExtResource("6_rili2")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
-shape = SubResource("WorldBoundaryShape2D_d6pai")
