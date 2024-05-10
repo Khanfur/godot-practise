@@ -15,6 +15,14 @@ run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://audio_bus.tres"
+
+[autoload]
+
+Music="*res://scenes/music.tscn"
+
 [editor]
 
 movie_writer/movie_file="C:/Users/Brandon/Documents/projects/godot-practise/out/movie.avi"
